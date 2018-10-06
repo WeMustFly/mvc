@@ -42,3 +42,13 @@ function saveInstance($modelName, $instance) {
         implode("\n", $data)
     );
 }
+
+function getSalt($SaltWithHash) {
+    $array = explode("+", $SaltWithHash); // Разделяем соль от хеша
+    return $array[0];
+}
+
+function getHash($SaltWithHash) {
+    $array = explode("+", $SaltWithHash); // Разделяем соль от хеша
+    return $array[1];
+}
