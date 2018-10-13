@@ -48,17 +48,21 @@ function getInstance($model, $id) {
     return $instance;
 }
 
-function saveInstance($modelName, $instance) {
+function saveInstance($modelName, $instance, $id) {
     $model = getModel($modelName);
 
     $data = [];
 
-    foreach ($model as $propertyName) {
+    foreach ($model['properties'] as $propertyName) {
         $data[] = $propertyName . ':' . $instance[$propertyName];
     }
 
     return file_put_contents(
-        __DIR__ . '/data/' . $modelName . '.data',
+        __DIR__ . '/data/' . $modelName . '/' . $id . '.data',
         implode("\n", $data)
     );
+}
+
+function existsIstance($model, $id) {
+    return file_exists(__DIR__ . '/data/' . $model . '/' . $id . '.data');
 }
