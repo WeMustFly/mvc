@@ -1,6 +1,7 @@
 <?php 
 
 define('DEFAULT_CONTROLLER', 'login');
+define('MVC_DIR', __DIR__);
 if (!file_exists(__DIR__ . '/controllers/' . DEFAULT_CONTROLLER . '.php')) {
     die('DEFAULT_CONTROLLER doesn\'t exist');
 }
