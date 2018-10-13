@@ -1,19 +1,34 @@
 <?php
 
 function getModel($modelName) {
-    $model = file_get_contents(__DIR__ . '/models/' . $modelName . '.model');
-    return preg_split("/\R/", $model);
+    $properties = file_get_contents(__DIR__ . '/models/' . $modelName . '.model');
+    $properties = preg_split("/\R/", $properties);
+
+    $model = [
+        '__MODEL__' => $modelName,
+        'properties' => $properties,
+    ];
+
+    return $model;
 }
 
-function getInstance($modelName) {
-    $model = getModel($modelName);
-    $data = file_get_contents(__DIR__ . '/data/' . $modelName . '.data');
+function getInstance($model, $id) {
+    $modelName = $model['__MODEL__'];
+    $data = file_get_contents(
+        __DIR__ . '/data/'
+        . $modelName . '/'
+        . $id . '.data'
+    );
+
+    if ($data === false) {
+        return null;
+    }
 
     $data = explode("\n", $data);
 
     $instance = [];
     
-    foreach ($model as $propertyName) {
+    foreach ($model['properties'] as $propertyName) {
         $propertyValue = null;
 
         foreach ($data as $d) {
@@ -27,6 +42,8 @@ function getInstance($modelName) {
 
         $instance[$propertyName] = $propertyValue;
     }
+
+    $instance['id'] = $id;
 
     return $instance;
 }
