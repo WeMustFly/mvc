@@ -1,23 +1,21 @@
 <?php 
 
+define('DEFAULT_CONTROLLER', 'login');
+if (!file_exists(__DIR__ . '/controllers/' . DEFAULT_CONTROLLER . '.php')) {
+    die('DEFAULT_CONTROLLER doesn\'t exist');
+}
+
 include_once('functions.php');
 
 session_start();
 
-$user = getInstance('User');
-$message = getInstance('Message');
+$userModel = getModel('User');
+$messageModel = getModel('Message');
 
-$controllers = [
-    'login',
-    'logout',
-    'welcome',
-    'message',
-];
-
-$controller = $_GET['controller'] ?? 'login';
-$controller = in_array($controller, $controllers) 
+$controller = $_GET['controller'] ?? DEFAULT_CONTROLLER;
+$controller = file_exists('controllers/' . $controller . '.php') 
     ? $controller
-    : $controllers[0];
+    : DEFAULT_CONTROLLER;
 
 $view = 'login';
 $vars = [

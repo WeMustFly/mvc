@@ -6,7 +6,11 @@ $username = $_POST['username'] ?? null;
 $password = $_POST['password'] ?? null;
 
 if ($username) {
-    if ($username === $user['username'] && $password === $user['password']) {
+    $user = getInstance($userModel, md5($username));
+
+    if (is_null($user)) {
+        $vars['error'] = 'User not found';
+    } else if ($username === $user['username'] && $password === $user['password']) {
         $_SESSION['username'] = $username;
     } else {
         $vars['error'] = 'Username and Password mismatch';
