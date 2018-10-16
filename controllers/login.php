@@ -1,19 +1,21 @@
 <?php
 
+$salt = 'k23n561nk';
 $view = 'login';
-
-$username = $_POST['username'] ?? null;
+$username = $_POST['login'] ?? null;
 $password = $_POST['password'] ?? null;
-
 if ($username) {
-    if ($username === $user['username'] && $password === $user['password']) {
-        $_SESSION['username'] = $username;
-    } else {
-        $vars['error'] = 'Username and Password mismatch';
+    foreach ($user as $value) {
+        if ($username === $value['login'] && md5($password . $salt) === $value['password']) {
+            $_SESSION['login'] = $username;
+            $vars['login'] = $username;
+            $view = 'welcome';
+        } else {
+            $vars['error'] = 'Username and password mismatch!';
+        }
     }
 }
-
-if (isset($_SESSION['username'])) {
-    $vars['username'] = $_SESSION['username'];
+if(isset($_SESSION['login'])) {
+    $vars['login'] = $_SESSION['login'];
     $view = 'welcome';
 }

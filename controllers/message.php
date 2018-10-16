@@ -1,16 +1,18 @@
 <?php
 
-$view = 'message';
-
-if ($_SESSION['username'] === $message['user']) {
-    $content = $_POST['content'] ?? null;
-    if ($content) {
-        $message['content'] = $content;
-        saveInstance('Message', $message);
+foreach ($message as $value) {
+    if ($_SESSION['login'] === $value['login']) {
+        $add_content = $_POST['message'] ?? null;
+        if($add_content) {
+            saveInstance($add_content, $value['login']);
+            $value['message'] = $add_content;
+        }
+        $vars['login'] = $value['login'];
+        $vars['message'] = $value['message'];
+        $view = 'message';
+        break;
     }
-
-    $vars['user'] = $message['user'];
-    $vars['content'] = $message['content'];
-} else {
-    $view = 'login';
+    else {
+        $view = 'login';
+    }
 }

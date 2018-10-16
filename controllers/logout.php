@@ -1,6 +1,6 @@
 <?php
 
 $view = 'login';
-if (isset($_SESSION['username'])) {
-    unset($_SESSION['username']);
+if (isset($_SESSION['login'])) {
+    unset($_SESSION['login']);
 }

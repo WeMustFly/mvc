@@ -1,46 +1,37 @@
 <?php
-function getModel($modelName){
+require_once "controllers/db.php";
+function getUserFromDb($modelName) {
+    $data = R::getAll('select * from users');
+    $arr1 = [];
+    $arr2 = [];
+    $users = [];
+    $propertyValue = null;
+    $model = getModel($modelName);
+    foreach ($data as $d) {
+        foreach ($d as $key => $value) {
+            if ($key === $model[0]) {
+                $propertyValue = $value;
+                $arr2 = [$model[0] => $propertyValue];
+            }
+            if ($key === $model[1]) {
+                $propertyValue = $value;
+                $arr1 = [$model[1] => $propertyValue];
+                array_push($users, $arr2 + $arr1);
+            }
+        }
+    }
+    return $users;
+}
+
+function getModel($modelName) {
     $model = file_get_contents(__DIR__ . '/models/' . $modelName . '.model');
     $model = preg_split("/\R/", $model);
     return $model;
 }
 
-function getInstance($modelName) {
-    $model = getModel($modelName);
-    $data = file_get_contents(__DIR__ . '/data/' . $modelName . '.data');
-
-    $data = explode("\n", $data);
-
-    $instance = [];
-    
-    foreach ($model as $propertyName) {
-        $propertyValue = null;
-
-        foreach ($data as $d) {
-            $d = explode(":", $d);
-
-            if ($d[0] === $propertyName) {
-                $propertyValue = $d[1];
-                break;
-            }
-        }
-
-        $instance[$propertyName] = $propertyValue;
-    }
-
-    return $instance;
+function saveInstance($instance, $login)
+{
+    $sQuery = "UPDATE users SET message='$instance' WHERE login='$login'";
+    R::exec( $sQuery );
 }
 
-function saveInstance($modelName, $instance) {
-    $model = getModel($modelName);
-    $data = [];
-
-    foreach ($model as $propertyName) {
-        $data[] = $propertyName . ':' . $instance[$propertyName];
-    }
-
-    return file_put_contents(
-        __DIR__ . '/data/' . $modelName . '.data',
-        implode("\n", $data)
-    );
-}

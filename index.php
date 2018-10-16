@@ -1,27 +1,27 @@
-<?php 
-
+<?php
 include_once('functions.php');
-
 session_start();
 
-$user = getInstance('User');
-$message = getInstance('Message');
+$user = getUserFromDb('User');
+$message = getUserFromDb('Message');
 
 $controllers = [
+    'mainpage',
     'login',
-    'logout',
+    'signup',
     'welcome',
     'message',
+    'logout',
 ];
 
-$controller = $_GET['controller'] ?? 'login';
-$controller = in_array($controller, $controllers) 
+$controller = $_GET['controller'] ?? 'mainpage';
+$controller = in_array($controller, $controllers)
     ? $controller
     : $controllers[0];
 
-$view = 'login';
+$view = 'mainpage';
 $vars = [
-    'error' => '',
+    'error' => ''
 ];
 
 include_once('controllers/' . $controller . '.php');
@@ -30,5 +30,6 @@ include_once('controllers/' . $controller . '.php');
 $content = file_get_contents(__DIR__ . '/views/' . $view . '.html');
 foreach ($vars as $key => $value) {
     $content = str_replace('{{'.$key.'}}', $value, $content);
+
 }
 echo $content;
