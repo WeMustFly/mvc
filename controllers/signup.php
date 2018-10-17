@@ -34,9 +34,9 @@ if(isset($tmp_data['SignUp'])) {
         $user->password = md5($tmp_data['password'].$salt);
         $user->message = null;
         R::store($user);
-        echo '<div style="color:lawngreen;">'.'Registration Complete'.'</div><hr>';
+        echo '<div style="color:lawngreen;">'.'Registration Complete'. '<a href="/index.php?controller=mainpage"> Go Home</a>' . '</div><hr>';
 
     } else {
-        echo '<div style="color:red;">'.array_shift($errors).'</div><hr>';
+        echo '<div style="color:red;">'.array_shift($errors). '<a href="/index.php?controller=mainpage"> Go Home</a>' .'</div><hr>';
     }
 }

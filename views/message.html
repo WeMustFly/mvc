@@ -1,21 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Message</title>
+	<title>Contact Us</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="views/messageTemplate/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/css/util.css">
+	<link rel="stylesheet" type="text/css" href="views/messageTemplate/css/main.css">
+<!--===============================================================================================-->
 </head>
 <body>
-    <h1>Message</h1>
-    <h2>From:</h2>
-    <p>{{login}}</p>
-    <h2>Content:</h2>
-    <p>{{message}}</p>
 
-    <h2>Change:</h2>
-    <form action="/index.php?controller=message" method="POST">
-        <input type="text" name="message">
-        <input type="submit" value="Change">
-    </form>
-    <a href="/">Home</a>
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form action="/index.php?controller=message" method="POST" class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Send Us A Message, {{login}}
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<label class="label-input100" for="message">Message</label>
+					<textarea id="message" class="input100" name="message" placeholder="Type your message here..."></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+						Send
+					</button>
+				</div>
+				<div style="text-align:center;">
+					<a href="/" >Go Home</a>
+				</div>
+
+				<!--<div class="contact100-form-social flex-c-m">-->
+					<!--<a href="#" class="contact100-form-social-item flex-c-m bg1 m-r-5">-->
+						<!--<i class="fa fa-facebook-f" aria-hidden="true"></i>-->
+					<!--</a>-->
+
+					<!--<a href="#" class="contact100-form-social-item flex-c-m bg2 m-r-5">-->
+						<!--<i class="fa fa-twitter" aria-hidden="true"></i>-->
+					<!--</a>-->
+
+					<!--<a href="#" class="contact100-form-social-item flex-c-m bg3">-->
+						<!--<i class="fa fa-youtube-play" aria-hidden="true"></i>-->
+					<!--</a>-->
+				<!--</div>-->
+			</form>
+
+			<div class="contact100-more flex-col-c-m" style="background-image: url('views/messageTemplate/images/bg-01.jpg');">
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+<!--===============================================================================================-->
+	<script src="views/messageTemplate/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="views/messageTemplate/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="views/messageTemplate/vendor/bootstrap/js/popper.js"></script>
+	<script src="views/messageTemplate/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="views/messageTemplate/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".js-select2").each(function(){
+			$(this).select2({
+				minimumResultsForSearch: 20,
+				dropdownParent: $(this).next('.dropDownSelect2')
+			});
+		})
+		$(".js-select2").each(function(){
+			$(this).on('select2:open', function (e){
+				$(this).parent().next().addClass('eff-focus-selection');
+			});
+		});
+		$(".js-select2").each(function(){
+			$(this).on('select2:close', function (e){
+				$(this).parent().next().removeClass('eff-focus-selection');
+			});
+		});
+
+	</script>
+<!--===============================================================================================-->
+	<script src="views/messageTemplate/vendor/daterangepicker/moment.min.js"></script>
+	<script src="views/messageTemplate/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="views/messageTemplate/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="views/messageTemplate/js/main.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
 </body>
 </html>

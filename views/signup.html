@@ -1,33 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Sign Up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="views/signInSignUpTemplate/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/css/util.css">
+    <link rel="stylesheet" type="text/css" href="views/signInSignUpTemplate/css/main.css">
+    <!--===============================================================================================-->
 </head>
 <body>
-<p style='color:red;'>{{error}}</p>
-<form action="/index.php?controller=signup" method="POST">
+<style>
+    .container-contact100{
+        background-image: url('views/signButtonsTemplate/images/bg-01.jpg');
+    }
+</style>
+<div class="container-contact100">
 
-    <p>
-    <p><strong>Your Login</strong></p>
-    <input type="text" name="login" placeholder="Login...">
-    </p>
-    <p>
-    <p><strong>Your Email</strong></p>
-    <input type="email" name="email" placeholder="E-mail...">
-    </p>
-    <p>
-    <p><strong>Your Password</strong></p>
-    <input type="password" name="password" placeholder="Password...">
-    </p>
-    <p>
-    <p><strong>Tape password again</strong></p>
-    <input type="password" name="password_2" placeholder="Password...">
-    </p>
-    <p>
-        <button type="submit" name="SignUp">
-            Sign Up
-        </button>
-    </p>
-    </p>
-</form>
+    <div class="wrap-contact100">
+        <form action="/index.php?controller=signup" method="POST" class="contact100-form validate-form" >
+				<span class="contact100-form-title">
+					Sign In
+				</span>
+
+            <div class="wrap-input100">
+                <input class="input100" type="text" name="login" placeholder="Your Login">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100">
+                <input class="input100" type="email" name="email" placeholder="Your Email">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100">
+                <input class="input100" type="password" name="password" placeholder="Your Password">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100">
+                <input class="input100" type="password" name="password_2" placeholder="Your Password again">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="submit" name="SignUp">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							Sign Up
+						</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="views/signInSignUpTemplate/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="views/signInSignUpTemplate/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="views/signInSignUpTemplate/vendor/bootstrap/js/popper.js"></script>
+<script src="views/signInSignUpTemplate/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="views/signInSignUpTemplate/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="views/signInSignUpTemplate/vendor/daterangepicker/moment.min.js"></script>
+<script src="views/signInSignUpTemplate/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="views/signInSignUpTemplate/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="views/signInSignUpTemplate/js/main.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>
